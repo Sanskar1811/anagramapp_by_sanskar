@@ -1,0 +1,63 @@
+<html>
+<head>
+	<title> Anagram Checker Application by Sanska </title>
+	<style>
+		* { font-size : 40px ; font-family : Arial ; }
+		body { background-color : #867979 ; }
+		h1 { color : white ; }
+	</style>
+</head>
+<body>
+<center>
+	<h1> Anagram Checker Application </h1>
+	<form onsubmit = "check()">
+		<input type = "text"  placeholder = "Enter first string"  id = "str1"  />
+		<br/><br/>
+		<input type = "text"  placeholder = "Enter second string"  id = "str2"  />
+		<br/><br/>
+		<input type = "submit"  value = "Check"/>
+	</form>
+	<h2 id = "msg" />
+
+	<script>
+		function check()
+		{
+			event.preventDefault();
+			let str1 = document.getElementById("str1");
+			let str2 = document.getElementById("str2");
+			let msg = document.getElementById("msg");
+
+			if (str1.value.trim() == "")
+			{
+				alert("First string is empty");
+				msg.innerHTML = "";
+				str1.value = "";
+				str1.focus();
+				return ;
+			}
+
+			if (str2.value.trim() == "")
+			{
+				alert("Second string is empty");
+				msg.innerHTML = "";
+				str2.value = "";
+				str2.focus();
+				return ;
+			}
+			
+			let string1 = str1.value.toLowerCase() ; 
+			let string2 = str2.value.toLowerCase() ; 
+			let n1 = string1.split("").sort().join("");
+			let n2 = string2.split("").sort().join("");
+
+			if (n1 == n2) 
+				msg.innerHTML = "Yes it is Anagram" ; 
+			else 
+				msg.innerHTML = "No it is not Anagram" ;
+
+		}
+
+	</script>
+</center>
+</body>
+</html>
